@@ -7,13 +7,18 @@ public class Message implements Serializable {
   String mensagem;
   int type;
   int id;
+  int typeCriptography;
+  String chave;
 
   public Message() {
   }
+ 
 
-  public Message(String mensagem, int type, int id) {
+  public Message(String mensagem, int type, int id, int typeCriptography, String chave) {
     this.mensagem = mensagem;
     this.type = type;
     this.id = id;  
+    this.typeCriptography = typeCriptography;
+    this.chave = chave;
   }
 }

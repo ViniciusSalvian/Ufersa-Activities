@@ -42,8 +42,8 @@ public class ImpCliente implements Runnable {
   
           String mensagem = "[" + id + " - " + val + "]";
 
-          byte[] bufferEnvio = mensagem.getBytes();
-          bufferEnvio = mensagem.getBytes();
+          byte[] bufferEnvio = mensagem.getBytes();        
+
           DatagramPacket datagramaEnvio = new DatagramPacket(
             bufferEnvio,
             bufferEnvio.length,

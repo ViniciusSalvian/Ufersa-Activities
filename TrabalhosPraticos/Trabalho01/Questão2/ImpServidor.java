@@ -12,7 +12,7 @@ public class ImpServidor implements Runnable {
   
   public ImpServidor(int porta) {
     this.porta = porta;
-    lista.add(new Clients(1, "10.215.10.148",1234));
+    lista.add(new Clients(1, "localhost",1234));
     lista.add(new Clients(2, "localhost",5678));
     lista.add(new Clients(3, "localhost",9101));
   }
@@ -30,15 +30,15 @@ public class ImpServidor implements Runnable {
       String msg = new String(bufferRecebimento);
 
       String[] arrayMsg = msg.split("-");
-      String realMsg = arrayMsg[0];
+
       int type = Integer.parseInt(arrayMsg[1]);
       // type 0 = unicast
       // type 1 = broadcast
       if (type == 0) {
-        int id = Integer.parseInt(arrayMsg[2]);
+        int id = Integer.parseInt(arrayMsg[2]); // msg + type + id
         for (Clients c : lista) {
           if (c.id == id) {
-           byte[] bufferEnvio = realMsg.getBytes();
+           byte[] bufferEnvio = msg.getBytes();
             DatagramPacket datagramaEnvio = new DatagramPacket(
               bufferEnvio,
               bufferEnvio.length,
@@ -51,14 +51,13 @@ public class ImpServidor implements Runnable {
         }
       } else {
         for (Clients c : lista) {
-          byte[] bufferEnvio = realMsg.getBytes();
+          byte[] bufferEnvio = msg.getBytes();
           DatagramPacket datagramaEnvio = new DatagramPacket(
             bufferEnvio,
             bufferEnvio.length,
             InetAddress.getByName(c.host),
             c.port
           );
-
           socketCliente.send(datagramaEnvio);
         }
       }

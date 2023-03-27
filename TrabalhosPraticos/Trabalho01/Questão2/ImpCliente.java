@@ -48,7 +48,7 @@ public class ImpCliente implements Runnable {
           msg.id = teclado.nextInt();         
         }
 
-        finalMessage = msg.mensagem + "-" + msg.type + "-" + msg.id + '-' + msg.typeCriptography + '-';
+        finalMessage = msg.mensagem + "-" + msg.type + "-" + msg.id + '-' + msg.typeCriptography + '-' + msg.chave;
 
         if (msg.typeCriptography == 1) {         
           cifraVigenere = new CifraVigenere(msg.chave);

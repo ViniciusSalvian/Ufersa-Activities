@@ -5,17 +5,17 @@ import java.util.Random;
 
 public class CifraVernam {
     
-    public static void main(String[] args) {
-        String message = "Mensagem a ser cifrada";
-        String key = generateKey(message.length());
-        String ciphertext = encrypt(message, key);
-        String plaintext = decrypt(ciphertext, key);
+    // public static void main(String[] args) {
+    //     String message = "Mensagem a ser cifrada";
+    //     String key = generateKey(message.length());
+    //     String ciphertext = encrypt(message, key);
+    //     String plaintext = decrypt(ciphertext, key);
 
-        System.out.println("Mensagem original: " + message);
-        System.out.println("Chave: " + key);
-        System.out.println("Mensagem cifrada: " + ciphertext);
-        System.out.println("Mensagem decifrada: " + plaintext);
-    }
+    //     System.out.println("Mensagem original: " + message);
+    //     System.out.println("Chave: " + key);
+    //     System.out.println("Mensagem cifrada: " + ciphertext);
+    //     System.out.println("Mensagem decifrada: " + plaintext);
+    // }
 
     public static String generateKey(int length) {
         byte[] key = new byte[length];
